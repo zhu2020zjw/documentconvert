@@ -47,7 +47,7 @@
 			<legend>
 				<span>输入文件</span>
 			</legend>
-			<form action="convertServlet" method="post">
+			<form action="upLoadServlet" method="post" enctype="multipart/form-data">
 				<input type="file" name="file" size="50"/>
 				<input type="submit" value="上传本地文件"/>
 			</form>
@@ -57,7 +57,7 @@
 			<legend>
 				<span>输出文件</span>
 			</legend>
-			<a href="#">标准预览</a>
+			<a href="convertServlet">标准预览</a>&nbsp;&nbsp;<a href="${requestScope.targetFileName }">${requestScope.targetFileName }</a>
 			<br><br>
 			<a href="#">高清预览</a>
 		</fieldset>
