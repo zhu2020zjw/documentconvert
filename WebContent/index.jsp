@@ -20,12 +20,29 @@
 		$(".first").click(function() {
 			$(".second_body").hide();
 			$(".first_body").show();
+			sessionStorage.setItem("mark",0);
 		});
 		
 		$(".second").click(function() {
 			$(".first_body").hide();
 			$(".second_body").show();
+			sessionStorage.setItem("mark",1);
 		});
+		
+		$(".look").click(function(){
+			location = $(".link").val();
+		});
+		
+		var getMark = sessionStorage.getItem("mark");
+		if(getMark == 1){
+			$(".second_body").css("display","block");
+			$(".first_body").css("display","none");
+			seesionStorage.removeItem("mark");
+		}else{
+			$(".second_body").css("display","none");
+			$(".first_body").css("display","block");
+			seesionStorage.removeItem("mark");
+		} 
 	})
 	
 </script>
@@ -72,7 +89,7 @@
 			<legend>
 				<span>添加结果</span>
 			</legend>
-			<form action="convertServlet" method="post">
+			<form action="upLoadServlet" method="post" enctype="multipart/form-data">
 				<input type="file" name="file" size="50"/>
 				<input type="submit" value="上传本地文件"/>
 			</form>
@@ -83,14 +100,17 @@
 				<span>选择类型</span>
 			</legend>
 			<div>
-				<select>
-					<option selected="selected" value="-1">请选择支持转换的格式</option>
-					<option value="html">html</option>
-					<option value="pdf">pdf</option>
-					<option value="doc">doc</option>
-					<option value="docx">docx</option>
-					<option value="txt">txt</option>
-				</select>
+				<form action="convertServlet?method=convert" method="post">
+					<select name="suffix">
+						<option selected="selected" value="-1">请选择支持转换的格式</option>
+						<option value="html">html</option>
+						<option value="pdf">pdf</option>
+						<option value="doc">doc</option>
+						<option value="docx">docx</option>
+					</select>
+					&nbsp;&nbsp;
+					<input type="submit" value="确定"/>
+				</form>
 			</div>
 		</fieldset>
 		<br>
@@ -98,7 +118,7 @@
 			<legend>
 				<span>转换结果</span>
 			</legend>
-			<input type="text" value="" size="50"/>
+			<input class="link" type="text" value="${requestScope.convertIP }" size="50"/>
 			<button class="download">下载</button>&nbsp;
 			<button class="look">预览</button>
 		</fieldset>
