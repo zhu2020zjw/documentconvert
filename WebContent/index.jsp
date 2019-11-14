@@ -57,9 +57,13 @@
 			<legend>
 				<span>输出文件</span>
 			</legend>
-			<a href="convertServlet">标准预览</a>&nbsp;&nbsp;<a href="${requestScope.targetFileName }">${requestScope.targetFileName }</a>
+			<a href="convertServlet?method=previewOfSD">标准预览</a>
+			&nbsp;&nbsp;
+			<a href="${requestScope.targetFileName }">${requestScope.targetFileName }</a>
 			<br><br>
-			<a href="#">高清预览</a>
+			<a href="convertServlet?method=previewOfHD">高清预览</a>
+			&nbsp;&nbsp;
+			<a href="${requestScope.targetFileNameOfHD }">${requestScope.targetFileNameOfHD }</a>
 		</fieldset>
 	</div>
 	

@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,16 +16,17 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 @MultipartConfig
-@WebServlet("/upLoadServlet")
 public class UpLoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	//文件上传保存文件的地址
 	public static String targetPath = null;
 
 	// 上传文件存储目录
 	private static final String UPLOAD_DIRECTORY = "upload";
 
 	// 上传配置
-	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
+	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 8; // 8MB
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
 	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 
